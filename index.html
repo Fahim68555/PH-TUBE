@@ -6,25 +6,49 @@
     <title>PH-TUBE</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style>
+    .active{
+        background-color:#FF1F3D ;
+        color:aliceblue
+    }
+</style>
 </head>
 <body>
     <header>
         <h2 class=" flex mx-auto justify-center text-[#02020238] -mb-4 italic text-xs pt-2">Program by Fahim Hasan</h2>
         <nav class="w-11/12 mx-auto flex justify-between border-b-2 p-3 border-[#17171720] gap-3">
-            <div><img class="w-[120px] mt-5" src="assets/Logo.png" alt=""></div>
-            <div><button class="lg:btn lg:mt-3  hidden lg:flex lg:h-12 w-36">Sort by view</button></div>
+            <div ><img class="w-[120px] mt-5" src="assets/Logo.png" alt=""></div>
+            <div><label class="input mt-3">
+                <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg>
+                <input id="search-input" type="search" required placeholder="Search"/>
+              </label></div>
             <div><button class="btn bg-[#FF1F3D] text-white mt-3 hover:bg-[#ff1f3d9d]">Blog</button></div>
         </nav>
         <nav id="category-container" class="flex py-5 justify-center gap-5">
-            <div><button class="btn btn-sm border-none  bg-[#FF1F3D] text-white hover:bg-[#ff1f3d9d]">All</button></div>
+            <div><button id="btn-all"  onclick="loadVideos()" class="btn btn-sm border-none">All</button></div>
             
            </nav>
     </header>
+<section id="loader"><span class="loading loading-spinner loading-xl text-center  mx-auto py-10 hidden"></span></section>
+    <section id="video-container" class="grid mx-auto grid-cols-1 sm:w-11/12 items-center sm:grid-cols-3 sm:gap-3 lg:grid-cols-4 lg:gap-y-6 lg:gap-x-12">
+       
 
-    <section id="video-container" class="grid mx-auto grid-cols-1 w-11/12 items-center sm:grid-cols-3 sm:gap-3 lg:grid-cols-4 lg:gap-y-6 lg:gap-x-12">
 
     </section>
 
+<!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="video_details" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box">
+        <div id="details_container"></div>
+       <div class="modal-action">
+        <form method="dialog">
+          <!-- if there is a button in form, it will close the modal -->
+          <button class="btn btn-primary">Close</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
 
     <script src="script/index.js"></script>
 </body>
